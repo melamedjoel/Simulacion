@@ -1,0 +1,12 @@
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\obj\Debug\Simulacion.csprojResolveAssemblyReference.cache
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\obj\Debug\Simulacion.Simulacion.resources
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\obj\Debug\Simulacion.Properties.Resources.resources
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\obj\Debug\Simulacion.csproj.GenerateResource.Cache
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\bin\Debug\Simulacion.exe
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\bin\Debug\Simulacion.pdb
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\bin\Debug\MathNet.Numerics.dll
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\bin\Debug\MathNet.Numerics.xml
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\obj\Debug\Simulacion.exe
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\obj\Debug\Simulacion.pdb
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\bin\Debug\log4net.dll
+C:\Users\Joel\Desktop\UTN\Nivel 4\Simulacion\SolucionSimulacroFinal\Simulacion\Simulacion\bin\Debug\log4net.xml
