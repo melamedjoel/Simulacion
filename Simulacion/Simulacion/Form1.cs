@@ -18,6 +18,7 @@ namespace Simulacion
         double T, TPLL, NS = 0;
         double TF = 0;
         double IA = 0;
+        double Tinic = 0;
         List<double> TPS = new List<double>();
         List<double> TA = new List<double>();
         List<double> STO = new List<double>();
@@ -74,21 +75,24 @@ namespace Simulacion
 
             int N = Convert.ToInt32(txtCantEmpl.Text);
             int M = Convert.ToInt32(txtCantEmplNuevos.Text);
+            
             for (int i=0; i < (Convert.ToInt32(txtCantEmpl.Text) + Convert.ToInt32(txtCantEmplNuevos.Text)); i++) {
                 TPS.Add(HV);
-                STO.Add(0);
+                STO.Add(T);
                 ITO.Add(0);
                 TA.Add(0);
             }
 
             if (cmbTurnos.Text == "Turno Mañana")
             {
-                T = 28800; //8 de la mañana en segundos
+                T = 28800; //8 de la mañana en segundos}
+                Tinic = T;
                 TPLL = T;
                 TF = 50400; //14 de la tarde en segundos
             }
             else {
                 T = 50400;
+                Tinic = T;
                 TPLL = T;
                 TF = 72000; //20 de la noche en segundos
             }
@@ -123,10 +127,10 @@ namespace Simulacion
             lblPEC.Text = (Math.Round((SS - SLL - STA) / NT, 2)).ToString();
             lblPArr.Text = ((SPA*100) / (NT+SPA)).ToString();
             for (int i=0; i < TPS.Count; i++) {
-                lblPTO.Text += "Puesto nro " + (i+1) + ", PTO: " + Math.Round((STO[i]*100/T),2).ToString()+ "\n\r";
+                double sto = (STO[i] == 0) ? T : STO[i];
+                lblPTO.Text += "Puesto nro " + (i+1) + ", PTO: " + Math.Round(((sto-Tinic)*100/(T-Tinic)),2).ToString()+ "\n\r";
             }
-            MessageBox.Show(NT.ToString());
-
+            lblCantCli.Text = NT.ToString();
         }
 
         private void realizarLlegada(int N, int M)

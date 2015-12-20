@@ -42,6 +42,8 @@
             this.lblPEC = new System.Windows.Forms.Label();
             this.lblPPS = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblCantCli = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCantEmp
@@ -170,11 +172,31 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "PTO(i)";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(319, 372);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(103, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Cantidad de clientes";
+            // 
+            // lblCantCli
+            // 
+            this.lblCantCli.AutoSize = true;
+            this.lblCantCli.Location = new System.Drawing.Point(454, 372);
+            this.lblCantCli.Name = "lblCantCli";
+            this.lblCantCli.Size = new System.Drawing.Size(103, 13);
+            this.lblCantCli.TabIndex = 15;
+            this.lblCantCli.Text = "Cantidad de clientes";
+            // 
             // Simulacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(647, 412);
+            this.Controls.Add(this.lblCantCli);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPArr);
             this.Controls.Add(this.lblPEC);
@@ -213,6 +235,8 @@
         private System.Windows.Forms.Label lblPEC;
         private System.Windows.Forms.Label lblPPS;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCantCli;
 
     }
 }
