@@ -180,7 +180,7 @@ namespace Simulacion
 
         private bool RealizarArrepentimiento(int N, int M)
         {
-            if (NS-1 > 3+N+M) {
+            if (NS > 3+N+M) {
                 double R = dameRandom();
                 if (R < 40) {
                     SPA++;
