@@ -85,16 +85,16 @@ namespace Simulacion
 
             if (cmbTurnos.Text == "Turno Mañana")
             {
-                T = 28800; //8 de la mañana en segundos}
+                T = 0; //8 de la mañana en segundos}
                 Tinic = T;
                 TPLL = T;
-                TF = 50400; //14 de la tarde en segundos
+                TF = 21600; //14 de la tarde en segundos
             }
             else {
-                T = 50400;
+                T = 0;
                 Tinic = T;
                 TPLL = T;
-                TF = 72000; //20 de la noche en segundos
+                TF = 21600; //20 de la noche en segundos
             }
 
             while (T <= TF || (T > TF && NS>0)) {
@@ -127,8 +127,8 @@ namespace Simulacion
             lblPEC.Text = (Math.Round((SS - SLL - STA) / NT, 2)).ToString();
             lblPArr.Text = ((SPA*100) / (NT+SPA)).ToString();
             for (int i=0; i < TPS.Count; i++) {
-                double sto = (STO[i] == 0) ? T : STO[i];
-                lblPTO.Text += "Puesto nro " + (i+1) + ", PTO: " + Math.Round(((sto-Tinic)*100/(T-Tinic)),2).ToString()+ "\n\r";
+                double sto = (STO[i]==0) ? T : STO[i];
+                lblPTO.Text += "Puesto nro " + (i + 1) + ", PTO: " + Math.Round((sto * 100 / T), 2).ToString() + "\n\r";
             }
             lblCantCli.Text = NT.ToString();
         }
@@ -138,7 +138,7 @@ namespace Simulacion
             T = TPLL;
             IA = calcularIA();
             TPLL = T + IA;
-            bool Arr = RealizarArrepentimiento();
+            bool Arr = RealizarArrepentimiento(N, M);
 
             if (Arr == false) {
                 NS = NS + 1;
@@ -159,11 +159,14 @@ namespace Simulacion
             int posicionPuestoHV = TPS.IndexOf(TPS.Find(x => x == HV));
             int mayorOcioso = posicionPuestoHV;
             for (int j = 0; j < TPS.Count; j++) {
-
                 if (TPS[j] == HV) {
-                    if (STO[j] > STO[posicionPuestoHV])
-                    {
+                    if (STO[j] == 0) {
                         mayorOcioso = j;
+                        return mayorOcioso;
+                    }
+                    else {
+                        mayorOcioso= STO.IndexOf(STO.Find(y => (y == STO.Max() && TPS[STO.IndexOf(y)] == HV)));
+                        //myList.FindAll(x => (x.StartTime <= minDateToReturn && x.EndTime >= maxDateToReturn):
                     }
                 }
             }
@@ -171,9 +174,9 @@ namespace Simulacion
 
         }
 
-        private bool RealizarArrepentimiento()
+        private bool RealizarArrepentimiento(int N, int M)
         {
-            if ((NS - 1) > 3) {
+            if (NS-1 > 3+N+M) {
                 double R = dameRandom();
                 if (R < 40) {
                     SPA++;
