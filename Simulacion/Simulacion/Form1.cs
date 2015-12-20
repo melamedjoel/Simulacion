@@ -165,7 +165,11 @@ namespace Simulacion
                         return mayorOcioso;
                     }
                     else {
-                        mayorOcioso= STO.IndexOf(STO.Find(y => (y == STO.Max() && TPS[STO.IndexOf(y)] == HV)));
+                        //mayorOcioso= STO.IndexOf(STO.Find(y => (TPS[STO.IndexOf(y)] == HV && y == STO.Max())));
+                        List<double> items = new List<double>();
+                        items = STO.FindAll(y => TPS[STO.IndexOf(y)] == HV);
+                        double mayorTiempoOcioso = items.Find(y => y == items.Max());
+                        mayorOcioso = STO.IndexOf(mayorTiempoOcioso);
                         //myList.FindAll(x => (x.StartTime <= minDateToReturn && x.EndTime >= maxDateToReturn):
                     }
                 }
