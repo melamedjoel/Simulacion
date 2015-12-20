@@ -127,7 +127,7 @@ namespace Simulacion
             lblPEC.Text = (Math.Round((SS - SLL - STA) / NT, 2)).ToString();
             lblPArr.Text = ((SPA*100) / (NT+SPA)).ToString();
             for (int i=0; i < TPS.Count; i++) {
-                double sto = (STO[i]==0) ? T : STO[i];
+                double sto = STO[i];
                 lblPTO.Text += "Puesto nro " + (i + 1) + ", PTO: " + Math.Round((sto * 100 / T), 2).ToString() + "\n\r";
             }
             lblCantCli.Text = NT.ToString();
@@ -158,19 +158,22 @@ namespace Simulacion
         {
             int posicionPuestoHV = TPS.IndexOf(TPS.Find(x => x == HV));
             int mayorOcioso = posicionPuestoHV;
-            for (int j = 0; j < TPS.Count; j++) {
-                if (TPS[j] == HV) {
-                    if (STO[j] == 0) {
+
+            for (int j = 0; j < TPS.Count; j++)
+            {
+                if (TPS[j] == HV)
+                {
+                    if (STO[j] == 0)
+                    {
                         mayorOcioso = j;
                         return mayorOcioso;
                     }
-                    else {
-                        //mayorOcioso= STO.IndexOf(STO.Find(y => (TPS[STO.IndexOf(y)] == HV && y == STO.Max())));
-                        List<double> items = new List<double>();
-                        items = STO.FindAll(y => TPS[STO.IndexOf(y)] == HV);
-                        double mayorTiempoOcioso = items.Find(y => y == items.Max());
-                        mayorOcioso = STO.IndexOf(mayorTiempoOcioso);
-                        //myList.FindAll(x => (x.StartTime <= minDateToReturn && x.EndTime >= maxDateToReturn):
+                    else
+                    {
+                        if (STO[j] > STO[mayorOcioso])
+                        {
+                            mayorOcioso = j;
+                        }
                     }
                 }
             }
@@ -195,11 +198,14 @@ namespace Simulacion
             double R = dameRandom();
             if (cmbTurnos.Text == "Turno Tarde")
             {
-                return new LogNormal(4.9074, 1.0703).Sample();
+                return new Normal(81.214, 42.859).Sample();
+                //return new Weibull(1.2957, 175.3).Sample();
                 //return new Gamma(1.1804, 179).InverseCumulativeDistribution(R/100);
             }
             else {
-                return new LogNormal(4.9788, 1.0368).Sample();
+                return new Normal(87.08, 41.019).Sample();
+                //return new Weibull(1.3402, 182.76).Sample();
+
                 //return new LogNormal(4.9788, 1.0368).InverseCumulativeDistribution(R/100);
             }
         }
@@ -226,7 +232,7 @@ namespace Simulacion
 
         private double calcularTA(int M)
         {
-            double OS = 25;
+            double OS = 35;
             double R = dameRandom();
 
             if (R <= OS)
@@ -235,7 +241,7 @@ namespace Simulacion
                 return new Normal(323.19, 183.3).Sample() + M*60;
                 //return new Normal(323.19, 183.3).InverseCumulativeDistribution(R/100) + M * 60;
             }
-            else { 
+            else {
                 //PARTICULAR
                 return new Weibull(1.5565, 100.47).Sample() + M * 60;
                 //return new Gamma(1.7458, 54.354).InverseCumulativeDistribution(R/100) + M * 60;
@@ -244,9 +250,13 @@ namespace Simulacion
 
         private static double dameRandom()
         {
-            Random rnd = new Random();
-            double R = rnd.Next(1, 101);
-            return R;
+            //Random rnd = new Random();
+            //double R = rnd.Next(1, 101);
+            //return R;
+            System.Random rng = SystemRandomSource.Default;
+
+            double sampled = rng.NextDouble();
+            return sampled * 100;
         }
 
         private int buscarMenorSalida(int N, int M)
